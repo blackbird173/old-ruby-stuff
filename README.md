@@ -1,3 +1,1 @@
-"# ruby_stuff" 
-"# ruby_stuff" 
-"# ruby_stuff" 
+im just going to be posting my ruby code here
