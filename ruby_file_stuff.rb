@@ -63,7 +63,7 @@ def File.spaceout(m)
     lol = eef.read
     eef.close()
     eef = File.open(m,"w")
-    lol.chars.each do |i|
+    lol.each_char do |i|
         eef.write(" "+i)
     end
 end
@@ -72,7 +72,7 @@ def File.rundown(m)
     lol = eef.read
     eef.close()
     eef = File.open(m,"w")
-    lol.chars.each do |i|
+    lol.each_char do |i|
         eef.write("\n"+i)
     end
 end
@@ -139,7 +139,7 @@ def File.stretch(m,m2)
     (1..m2).each do
         x = x+" "
     end
-    lol.chars.each do |i|
+    lol.each_char do |i|
         eef.write(x+i)
     end
 end
@@ -215,4 +215,34 @@ def File.char_check_times(m,m2)
     if lol.include?(m2) then
         puts("the file has "+int.to_s+" "+m2+"/s in it")
     end
+end
+def File.innerwrite(m,m2,m3)
+    eef = File.open(m,"r")
+    lol = eef.read()
+    eef = File.open(m,"w")
+    x = m2
+    (2..m3).each do
+        x = x + m2
+    end
+    z = x.length
+    lol.each_char do |i|
+        eef.write(i+x)
+        eef.flush()
+    end
+    eef = File.open(m,"r")
+    lol2 = eef.read
+    lol2[-z..-1] = ""
+    eef = File.open(m,"w")
+    eef.write(lol2)
+end
+def File.outerwrite(m,m2,m3)
+    eef = File.open(m,"r")
+    lol = eef.read()
+    eef = File.open(m,"w")
+    x = m2
+    (2..m3).each do
+        x = x + m2
+    end
+    lol = x+lol+x
+    eef.write(lol)
 end
