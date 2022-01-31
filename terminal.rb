@@ -1,4 +1,4 @@
-kek = File.open("logs.txt","a+")
+kek = File.open("terminal_logs.txt","a+")
 if kek.read() == "" then
     puts("enter ur name")
     lol = gets.chomp
@@ -13,7 +13,7 @@ loop do
     cmds = gets.chomp
     case cmds
         when "cmds"
-            puts("file create","file_write","file_read","file delete","file rename","file write and read","file remove part of","game","matrix","spinny","output","run","tell me a joke","file text to lines","space out","wavify","slander","tic tac toe","file shuffle","clear","file clear","file remove space","file plusspace","file remove line","fileify")
+            puts("file create","file_write","file_read","file delete","file rename","file write and read","file remove part of","game","matrix","spinny","output","run","tell me a joke","file text to lines","space out","wavify","slander","tic tac toe","file shuffle","clear","file clear","file remove space","file plusspace","file remove line","fileify","dance","file in","file out","file ify","file reverse","file char count","file contains","file every other ify")
         when "file create"
             puts("enter the name of the file u wish to create")
             name = gets.chomp
@@ -180,7 +180,7 @@ loop do
             facts = facts.shuffle
             puts(facts[0])
         when "tic tac toe"
-            eef = File.open("logs.txt","a")
+            tic_logs = File.open("logs.txt","a")
             map = ["...","...","..."]
             int = 0
             loop do
@@ -198,35 +198,35 @@ loop do
                     end
                 end
                 if map.include?("xxx") then
-                    eef.write("x wins\n")
+                    tic_logs.write("x wins\n")
                     break
                 elsif map.include?("ooo") then
-                    eef.write("o wins\n")
+                    tic_logs.write("o wins\n")
                     break
                 end
                 if map[0][0] == "x" and map[1][0] == "x" and map[2][0] == "x" then
-                    eef.write("x wins\n")
+                    tic_logs.write("x wins\n")
                     break
                 elsif map[0][1] == "x" and map[1][1] == "x" and map[2][1] == "x" then
-                    eef.write("x wins\n")
+                    tic_logs.write("x wins\n")
                     break
                 elsif map[0][2] == "x" and map[1][2] == "x" and map[2][2] == "x" then
-                    eef.write("x wins\n")
+                    tic_logs.write("x wins\n")
                     break
                 end
                 if map[0][0] == "o" and map[1][0] == "o" and map[2][0] == "o" then
-                    eef.write("o wins\n")
+                    tic_logs.write("o wins\n")
                     break
                 elsif map[0][1] == "o" and map[1][1] == "o" and map[2][1] == "o" then
-                    eef.write("o wins\n")
+                    tic_logs.write("o wins\n")
                     break
                 elsif map[0][2] == "o" and map[1][2] == "o" and map[2][2] == "o" then
-                    eef.write("o wins\n")
+                    tic_logs.write("o wins\n")
                     break
                 end
                 puts(map)
             end
-            eef.close
+            tic_logs.close
         when "file shuffle"
             puts("enter the file name")
             name = gets.chomp
@@ -271,6 +271,7 @@ loop do
         eef = File.open(name,"w")
         ar.each do |i|
             eef.write(x+i)
+            eef.flush()
             x = x+" "
         end
         eef.close()
@@ -282,6 +283,7 @@ loop do
         lol = eef.read()
         k = eef.readlines()[0]
         eef.write()
+        eef.flush()
     when "fileify"
         puts("enter a file name")
         name = gets.chomp
@@ -292,6 +294,105 @@ loop do
         eef = File.open(name,"w")
         lol.each_char do |m|
             eef.write(what)
+            eef.flush()
+        end
+        eef.close()
+    when "dance"
+        loop do
+            var = "\\o\\\b\b\b"
+            print(var)
+            sleep(0.1)
+            var = "/o/\b\b\b"
+            print(var)
+            sleep(0.1)
+        end
+    when "file in"
+        puts("enter a file name")
+        name = gets.chomp
+        puts("enter smth")
+        smth = gets.chomp
+        eef = File.open(name,"r")
+        lol = eef.read()
+        eef = File.open(name,"w")
+        lol.each_char do |m|
+            eef.write(m+smth)
+            eef.flush()
+        end
+        eef = File.open(name,"r")
+        lol2 = eef.read()
+        eef = File.open(name,"w")
+        lol2[-smth.length..-1] = ""
+        eef.write(lol2)
+        eef.flush()
+        eef.close()
+    when "file out"
+        puts("enter a file name")
+        name = gets.chomp
+        puts("enter smth")
+        smth = gets.chomp
+        eef = File.open(name,"r")
+        lol = eef.read()
+        eef = File.open(name,"w")
+        eef.write(smth+lol+smth)
+        eef.flush()
+        eef.close()
+    when "file ify"
+        puts("enter a file name")
+        name = gets.chomp
+        puts("enter smth")
+        smth = gets.chomp
+        eef = File.open(name,"r")
+        lol = eef.read()
+        eef = File.open(name,"w")
+        lol.each_char do |m|
+            eef.write(smth)
+            eef.flush()
+        end
+        eef.close()
+    when "file reverse"
+        puts("enter a file name")
+        name = gets.chomp
+        eef = File.open(name,"r")
+        lol = eef.read()
+        eef = File.open(name,"w")
+        eef.write(lol.reverse)
+        eef.flush()
+        eef.close()
+    when "file char count"
+        puts("enter a file name")
+        name = gets.chomp
+        eef = File.open(name,"r")
+        lol = eef.read()
+        puts("the file has "+lol.length+" chars")
+    when "file contains"
+        puts("enter a file name")
+        name = gets.chomp
+        puts("enter smth")
+        smth = gets.chomp
+        eef = File.open(name,"r")
+        lol = eef.read()
+        if lol.match(smth) then
+            puts("the file contains "+smth)
+        else
+            puts("the file does not contain "+smth)
+        end
+    when "file every other ify"
+        int = 0
+        puts("enter a file name")
+        name = gets.chomp
+        puts("enter smth")
+        smth = gets.chomp
+        eef = File.open(name,"r")
+        lol = eef.read()
+        eef = File.open(name,"w")
+        name.each_char do |m|
+            if int.even?() then
+                eef.write(m)
+                eef.flush()
+            else
+                eef.write(smth)
+                eef.flush()
+            end
         end
         eef.close()
     end
